@@ -52,7 +52,7 @@ while True:
              print("Sua conta não permite ficar com saldo negativo")
          
      elif opcao == "e":
-        print(f"Seu saldo atual é:R${saldo}")
+        print(f"Seu saldo atual é:R${saldo:.2f}")
         if quantidade_deposito >= 1 :
              print(f"Você realizou {quantidade_deposito} deposito(s) no valor total de R${valor_total_deposito}")
         if quantidade_saques >= 1 :
