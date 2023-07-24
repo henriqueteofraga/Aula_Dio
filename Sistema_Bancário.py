@@ -27,8 +27,7 @@ while True:
          valor_depositado +=  float(input("Digite quanto deseja depositar:\n"))
         print(f"Você depositou R${valor_depositado:.2f} na sua conta.")
         saldo += valor_depositado
-        quantidade_deposito += 1 
-        valor_total_deposito += valor_depositado
+        extrato += f"Deposito realizado no valor de R${valor_depositado:.2f}\n"
     
      elif opcao == "s":
          if saldo > 0 :
@@ -44,6 +43,7 @@ while True:
                       saldo -= valor_saque
                       quantidade_saques += 1
                       valor_total_saque += valor_saque
+                      extrato += f"Saque realizado no valor de R${valor_saque:.2f}\n"
                       print(f"Você realizou {quantidade_saques} de {LIMITE_SAQUES} saques diários.")
                  else:
                      print("Valor desejado extrapola o limite de R$500,00")
@@ -52,12 +52,11 @@ while True:
              print("Sua conta não permite ficar com saldo negativo")
          
      elif opcao == "e":
-        print(f"Seu saldo atual é:R${saldo:.2f}")
-        if quantidade_deposito >= 1 :
-             print(f"Você realizou {quantidade_deposito} deposito(s) no valor total de R${valor_total_deposito}")
-        if quantidade_saques >= 1 :
-             print (f"Você realizou {quantidade_saques} saque(s) no valor total de R${valor_total_saque}")
-                
+        print("            Extrato           ")
+        print("--------------------------------------------")
+        print(f"Seu saldo atual é R${saldo:.2f}")        
+        print(extrato.center(10," "))
+        print("--------------------------------------------")        
     
      elif opcao == "q":
         break
