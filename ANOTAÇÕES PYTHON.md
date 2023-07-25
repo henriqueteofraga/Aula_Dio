@@ -456,3 +456,264 @@ print(len(linguagens))  # 5
 
 FIM PARTE 4
 ###############################################################################################################
+
+PARTE 5 - CONJUNTOS/SET
+""" 
+CONJUNTOS PODEM SER DEFINIDOS USANDO A PALAVRA SET
+
+ELE PEGA OS VALORES REPETIDOS E IGNORA ELES, COMO NOS EXEMPLOS ABAIXOS:
+
+TAMBÉM É POSSIVEL DECLARAR UM CONJUNTO USANDO {} EM VEZ DA PALAVRA SET, COMO NO EXEMPLO ABAIXO:
+
+ELE NAO GARANTE ORGEM NAS HORA DE MOSTRAR NA TELA, PORTANTO  PODE ALTERAR A CADA VEZ QUE EXECUTAR O CÓDIGO
+"""
+
+numeros = set([1, 2, 3, 1, 3, 4])
+print(numeros)  # {1, 2, 3, 4}
+
+letras = set("abacaxi")
+print(letras)  # {"b", "a", "c", "x", "i"}
+
+carros = set(("palio", "gol", "celta", "palio"))
+print(carros)  # {"gol", "celta", "palio"}
+
+nomes = {"Henrique", "Vitória", "Milena", "Fabiano", "Silvania"}
+print(nomes) #{"Henrique", "Vitória", "Milena", "Fabiano", "Silvania"}
+
+""" 
+CONJUNTOS NÃO PODEM SER NAVEGADOS POR INDEXISAÇÃO IGUAL LISTAS/TUPLAS
+
+PARA ISSO É NECESSÁRIO CONVERTER UM CONJUNTO EM UMA LISTA PARA PODER NAVEGAR POE ELA
+
+EXEMPLO ABAIXO ↓
+"""
+
+numeros = {1, 2, 3, 2}
+
+numeros = list(numeros)
+
+print(numeros[0])
+
+"""  
+AINDA ASSIM É POSSIVEL NAVEGAR POR CONJUNTOS UTILIZANDO O COMANDO FOR, FUNCIONA IGUAL UMA LISTA/TUPLA
+
+EXEMPLO ABAIXO
+"""
+
+carros = {"gol", "celta", "palio"}
+
+for carro in carros:
+    print(carro)
+
+for indice, carro in enumerate(carros):
+    print(f"{indice}: {carro}")
+
+""" 
+ESSE METODO SERVE PARA JUNTAR INFORMAÇÕES DE DOIS CONJUNTOS UTILIZANDO .union() EM UMA VARIAVEL
+
+
+EXEMPLO ABAIXO
+"""
+
+conjunto_a = {1, 2}
+conjunto_b = {3, 4}
+
+resultado = conjunto_a.union(conjunto_b)
+print(resultado)
+
+"""  
+ESSE METODO FUNCIONA PARA JUNTAR INFORMAÇÕES QUE TEM EM COMUM ENTRE CONJUNTOS, UTILIZANDO O COMANDO .intersection()
+
+EXEMPLO ABAIXO
+"""
+
+conjunto_a = {1, 2, 3}
+conjunto_b = {2, 3, 4}
+
+resultado = conjunto_a.intersection(conjunto_b)
+print(resultado)
+
+"""  
+ESSE METODO SERVE PARA MOSTRAR O QUE TEM DE DIFERENTE ENTRE UM CONJUNTO E OUTRO, UTILIZANDO O COMANDO ,difference()
+
+EXEMPLO ABAIXO
+"""
+
+conjunto_a = {1, 2, 3}
+conjunto_b = {2, 3, 4}
+
+resultado = conjunto_a.difference(conjunto_b)
+print(resultado)
+
+resultado = conjunto_b.difference(conjunto_a)
+print(resultado)
+
+"""  
+ESSE METODO SERVE PARA MOSTRAR O QUE APARECE EM UM CONJUNTO E NÃO NO OUTRO, EXIBINDO A DIFERENÇA ENTRE OS DOIS
+CONJUNTOS 
+
+por exemplo 
+{1, 2, 3} - CONJUNTO A
+{2, 3, 4} - CONJUNTO B
+{1, 4} - RETORNO DO METODO MOSTRANDO QUE O 1 E O 4 SÃO OS UNICOS Q NAO SE REPETEM
+"""
+conjunto_a = {1, 2, 3}
+conjunto_b = {2, 3, 4}
+print(conjunto_a)
+print(conjunto_b)
+
+resultado = conjunto_a.symmetric_difference(conjunto_b)
+print(resultado)
+
+"""  
+ESSE METODO SERVE PRA MOSTRAR SE UM CONJUNTO É SUBCONJUNTO DE OUTRO
+
+EXEMPLO:
+conjunto_a = {1, 2, 3} 
+conjunto_b = {4, 1, 2, 5, 6, 3}
+O CONJUNTO_B CONTEM OS MESMO VALORES QUE O CONJUNTO_A, PORTANTO O CONJUNTO_A É UM SUBCONJUNTO DO CONJUNTO_B
+
+UTILIZANDO O METODO .issubset() CASO O CONJUNTO QUE ESTIVER DENTRO DO PARENTESES TER OS VALORES QUE TEM TAMBÉM
+NO CONJUNTO QUE ESTÁ CHAMANDO O METODO, ELE RETORNARÁ TRUE CASO NÃO FOR RETORNARÁ FALSE
+"""
+
+conjunto_a = {1, 2, 3}
+conjunto_b = {4, 1, 2, 5, 6, 3}
+
+resultado = conjunto_a.issubset(conjunto_b)  # True
+print(resultado)
+
+resultado = conjunto_b.issubset(conjunto_a)  # False
+print(resultado)
+
+"""  
+ESSE METODO É O CONTRARIO DO METEODO ISSUBSET.
+
+EM CASO DE DUVIDA, LER O ARQUIVO DO ISSUBSET
+
+"""
+
+conjunto_a = {1, 2, 3}
+conjunto_b = {4, 1, 2, 5, 6, 3}
+
+resultado = conjunto_a.issuperset(conjunto_b)  # False
+print(resultado)
+
+resultado = conjunto_b.issuperset(conjunto_a)  # True
+print(resultado)
+
+"""  
+SERVE PRA MOSTRAR SE UM CONJUNTO É TOTALMENTE DIFERENTE DO OUTRO, SEM TER NENHUM VALOR IGUAL EM AMBOS
+
+CASO NÃO TENHA NENHUM VALOR IGUAL EM AMBOS ELE RETORNARÁ TRUE
+CASO TENHA ALGUM VALOR, INDEPENDENTE DE QUANTOS FOREM, RETORNARÁ FALSE
+
+"""
+
+conjunto_a = {1, 2, 3, 4, 5}
+conjunto_b = {6, 7, 8, 9}
+conjunto_c = {1, 0}
+
+resultado = conjunto_a.isdisjoint(conjunto_b)  # True
+print(resultado)
+
+resultado = conjunto_a.isdisjoint(conjunto_c)  # False
+print(resultado)
+
+"""  
+SERVE PARA ADICIONAR UM VALOR AO CONJUNTO, MAS APENAS CASO O VALOR NÃO EXISTA AINDA NO CONJUNTO
+CASO JÁ EXISTA ELE IGNORA
+
+"""
+
+sorteio = {1, 23}
+
+sorteio.add(25)  # {1, 23, 25}
+print(sorteio)
+
+sorteio.add(42)  # {1, 23, 25, 42}
+print(sorteio)
+
+sorteio.add(25)  # {1, 23, 25, 42}
+print(sorteio)
+
+""" 
+COMO O NOME JÁ DIZ, SERVE PRA LIMPAR OS VALORES QUE TEM EM UM CONJUNTO
+"""
+
+sorteio = {1, 23}
+
+print(sorteio)  # {1,23}
+
+sorteio.clear()
+
+print(sorteio)  # {}
+
+""" 
+SERVE PRA COPIAR UM CONJUNTO EM OUTRO
+"""
+
+sorteio = {1, 23, 45}
+
+print(sorteio)  # {1, 23}
+
+teste = sorteio.copy()
+
+print(teste)  # {1, 23}
+
+""" 
+SERVE PRA TIRAR UM VALOR ESPECIFICADO NO ()
+
+CASO O VALOR ESPECIFICADO TENHA NO CONJUNTO, ELE É REMOVIDO CASO NÃO TENHA O VALOR NO CONJUNTO O SISTEMA
+APENAS IGNORA O COMANDO EM VEZ DE DAR ERRO
+"""
+
+numeros = {1, 2, 3, 1, 2, 4, 5, 5, 6, 7, 8, 9, 0}
+
+print(numeros)  # {1, 2, 3, 4, 5, 6, 7, 8, 9, 0}
+
+numeros.discard(1)
+numeros.discard(45)
+
+print(numeros)  # {2, 3, 4, 5, 6, 7, 8, 9, 0}
+
+""" 
+SERVE PRA REMOVER O PRIMEIRO VALOR DA ESQUERDA PRA DIREITA E NAO PODE TER PARAMETRO NO ()
+"""
+
+numeros = {1, 2, 3, 1, 2, 4, 5, 5, 6, 7, 8, 9, 0}
+
+print(numeros)  # {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+print(numeros.pop())  # 0
+print(numeros.pop())  # 1
+print(numeros)  # {2, 3, 4, 5, 6, 7, 8, 9}
+
+""" 
+QUASE IGUAL AO DISCARD, A UNICA DIFERENÇA É QUE CASO O VALOR NÃO EXISTA IRÁ DAR ERRO NO PROGRAMA
+"""
+
+numeros = {1, 2, 3, 1, 2, 4, 5, 5, 6, 7, 8, 9, 0}
+
+print(numeros)  # {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+print(numeros.remove(0))  # 0
+print(numeros)  # {1, 2, 3, 4, 5, 6, 7, 8, 9}
+
+""" 
+SERVER PRA MOSTRAR O TAMANHO DO CONJUNTO, MAS NÃO LEVA EM CONTA VALORES DUPLICADO
+numeros = {1, 2, 3, 1, 2, 4, 5, 5, 6, 7, 8, 9, 0}  TEM 13 NUMERO, MAS SE USAR O LEN VAI MOSTRAR
+APENAS 10 POIS IGNORA DUPLICADOS
+"""
+
+numeros = {1, 2, 3, 1, 2, 4, 5, 5, 6, 7, 8, 9, 0}
+
+print(len(numeros))  # 10
+
+""" 
+SERVE PRA MOSTRAR SE O VALOR ESPECIFICADO ANTES DO IN EXISTE NO CONJUNTO INFORMADO, CASO EXISTA DA TRUE
+CASO NÃO DA FALSE
+"""
+
+numeros = {1, 2, 3, 1, 2, 4, 5, 5, 6, 7, 8, 9, 0}
+
+print(1 in numeros)  # True
+print(10 in numeros)  # False
